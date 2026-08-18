@@ -4,7 +4,7 @@ Experimental analysis of the **Franck–Hertz experiment** using voltage-current
 
 This project analyzes experimental data collected during a laboratory experiment at the **Universidad Autónoma de Madrid (UAM)**. The accompanying Python code was developed to process, visualize, and analyze the measurements stored in the `MRF/` directory.
 
-The analysis investigates the characteristic current minima produced by inelastic electron-atom collisions and uses their voltage separation to estimate the **excitation energy of mercury atoms** and the corresponding **photon wavelength**.
+The analysis investigates the characteristic current minima produced by inelastic electron–atom collisions and uses their voltage separation to estimate the **excitation energy of mercury atoms** and the corresponding **photon wavelength**, with **experimental uncertainties propagated through the relevant scientific calculations**.
 
 ## Overview
 
