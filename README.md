@@ -79,7 +79,9 @@ $$
 For singly charged electrons, the corresponding excitation energy is numerically equal to the voltage difference in electronvolts:
 
 $$
+\boxed{
 E_{\mathrm{exc}} = (4.93 \pm 0.41),\mathrm{eV}
+}
 $$
 
 This gives the experimental estimate of the excitation energy of mercury atoms obtained from the Franck–Hertz measurements.
@@ -105,16 +107,6 @@ $$
 \lambda = (251.7 \pm 20.9),\mathrm{nm}
 }
 $$
-
-The corresponding experimental excitation energy is therefore:
-
-$$
-\boxed{
-E_{\mathrm{exc}} = (4.93 \pm 0.41),\mathrm{eV}
-}
-$$
-
-> **Note:** The relatively large experimental uncertainty is mainly associated with the scatter in the voltage separation between consecutive current minima. The reported values should therefore be interpreted as experimental estimates rather than high-precision measurements.
 
 ## Experimental Figures
 
@@ -206,50 +198,6 @@ minimum_indices, _ = find_peaks(
 ```
 
 The voltage differences between consecutive minima are then calculated and averaged across the selected experimental measurements.
-
-### Excitation Energy
-
-For an electron with charge magnitude $e$, an accelerating voltage difference $\Delta V$ corresponds to an energy difference
-
-$$
-\Delta E = e,\Delta V.
-$$
-
-Expressed in electronvolts, this relationship becomes numerically
-
-$$
-E_{\mathrm{exc}}[\mathrm{eV}]
-\approx
-\Delta V[\mathrm{V}].
-$$
-
-Therefore, the excitation energy is estimated from the mean voltage separation between consecutive minima:
-
-$$
-E_{\mathrm{exc}} \approx \Delta V.
-$$
-
-### Photon Wavelength
-
-The wavelength associated with the excitation energy is calculated using
-
-$$
-\lambda = \frac{hc}{E}.
-$$
-
-Using
-
-$$
-hc \approx 1240,\mathrm{eV,nm},
-$$
-
-the wavelength in nanometers can be calculated directly as
-
-$$
-\lambda[\mathrm{nm}]
-\approx
-\frac{1240}{E[\mathrm{eV}]}.
-$$
 
 ## Technologies
 
