@@ -1,14 +1,18 @@
 # ⚛️ Franck–Hertz Experiment
 
-Experimental analysis of the **Franck–Hertz experiment** using voltage-current measurements of a mercury-filled Franck–Hertz tube.
+Experimental analysis of the **Franck–Hertz experiment** using voltage-current measurements obtained from a mercury-filled Franck–Hertz tube.
 
-The project investigates the characteristic current minima produced by inelastic electron-atom collisions and uses the experimental data to estimate the **excitation energy of mercury atoms** and the corresponding **photon wavelength**.
+This project analyzes experimental data collected during a laboratory experiment at the **Universidad Autónoma de Madrid (UAM)**. The accompanying Python code was developed to process, visualize, and analyze the measurements stored in the `MRF/` directory.
+
+The analysis investigates the characteristic current minima produced by inelastic electron-atom collisions and uses their voltage separation to estimate the **excitation energy of mercury atoms** and the corresponding **photon wavelength**.
 
 ## Overview
 
 The Franck–Hertz experiment provides direct experimental evidence for the quantization of atomic energy levels. Electrons are accelerated through a gas of mercury atoms and undergo inelastic collisions when their kinetic energy reaches the excitation energy of the atoms.
 
-This project analyzes experimental measurements acquired at different:
+The experimental measurements analyzed in this project were **personally acquired by the author during the corresponding laboratory session at the Universidad Autónoma de Madrid**.
+
+The dataset includes measurements performed under different experimental conditions:
 
 * Tube temperatures
 * Braking voltages
@@ -17,93 +21,128 @@ This project analyzes experimental measurements acquired at different:
 
 The analysis includes both standard current-voltage measurements and hysteresis measurements.
 
+## Experimental Data
+
+The original experimental measurements are stored in the `MRF/` directory.
+
+These files contain the voltage-current data recorded during the laboratory experiment. The Python script reads these files directly, processes the measurement format, and performs the subsequent analysis.
+
+The data therefore correspond to **actual experimental measurements rather than simulated or publicly sourced data**.
+
+The general workflow is:
+
+```text
+Laboratory experiment
+        ↓
+Experimental voltage-current measurements
+        ↓
+Data stored in MRF/
+        ↓
+Python data processing
+        ↓
+Signal processing and statistical analysis
+        ↓
+Franck–Hertz excitation energy
+        ↓
+Photon wavelength
+```
+
 ## Analysis
 
 The Python script performs the following steps:
 
-1. Loads experimental voltage-current measurements from text files.
+1. Loads voltage-current measurements from the experimental data files.
 2. Converts the original measurement format into numerical NumPy arrays.
 3. Plots experimental **I–V curves** for different temperatures, braking voltages, and resistances.
 4. Analyzes **hysteresis** by comparing increasing and decreasing voltage sweeps.
 5. Investigates the dependence of the critical voltage on the tube temperature.
-6. Performs a weighted linear fit of `log(V)` as a function of temperature.
-7. Calculates the coefficient of determination (R^2).
+6. Performs a weighted linear fit of $\log(V)$ as a function of temperature.
+7. Calculates the coefficient of determination $R^2$.
 8. Smooths experimental current signals using a Gaussian filter.
 9. Automatically detects consecutive current minima using `scipy.signal.find_peaks`.
 10. Determines the mean voltage separation between consecutive minima.
 11. Estimates the **excitation energy of mercury atoms**.
-12. Calculates the corresponding **photon wavelength** using
-
-[
-E = \frac{hc}{\lambda}.
-]
+12. Calculates the corresponding **photon wavelength**.
 
 ## Results
 
-The analysis of the selected experimental measurements gives approximately:
+### Excitation Energy
 
-[
-\Delta_V = (5.06 \pm 2.94),\mathrm{V}
-]
+The voltage separation between consecutive current minima was determined from several selected experimental measurements.
 
-for the mean voltage separation between consecutive current minima.
+The resulting mean voltage difference was:
 
-For singly charged electrons, the corresponding excitation energy is numerically equal to the voltage difference:
+$$
+\Delta V = (5.06 \pm 2.94),\mathrm{V}
+$$
 
-[
-E_\mathrm{exc} = (5.06 \pm 2.94),\mathrm{eV}.
-]
+For singly charged electrons, the corresponding excitation energy is numerically equal to the voltage difference in electronvolts:
 
-The associated photon wavelength is therefore approximately
+$$
+E_{\mathrm{exc}} = (5.06 \pm 2.94),\mathrm{eV}
+$$
 
-[
-\lambda = (251.7 \pm 20.9),\mathrm{nm}.
-]
+This gives the experimental estimate of the excitation energy of mercury atoms obtained from the Franck–Hertz measurements.
 
-The temperature-dependent analysis also includes a weighted linear fit of
+### Photon Wavelength
 
-[
-\log(V_\mathrm{critical})
-]
+Using the relation
 
-as a function of temperature.
+$$
+E = \frac{hc}{\lambda},
+$$
 
-The fit quality is evaluated using the coefficient of determination (R^2).
+the wavelength associated with the excitation energy was calculated as
 
-> **Note:** The experimental uncertainty is relatively large, primarily due to the scatter in the detected voltage spacing between consecutive minima. The reported values should therefore be interpreted as experimental estimates rather than high-precision measurements.
+$$
+\lambda = \frac{hc}{E}.
+$$
 
-## Requirements
+Using $hc \approx 1240,\mathrm{eV,nm}$, the resulting wavelength is:
 
-The project requires Python 3 and the following scientific Python libraries:
+$$
+\boxed{
+\lambda = (251.7 \pm 20.9),\mathrm{nm}
+}
+$$
 
-* NumPy
-* SciPy
-* Matplotlib
+The corresponding experimental excitation energy is therefore:
 
-Install the dependencies with:
+$$
+\boxed{
+E_{\mathrm{exc}} = (5.06 \pm 2.94),\mathrm{eV}
+}
+$$
 
-## Usage
+> **Note:** The relatively large experimental uncertainty is mainly associated with the scatter in the voltage separation between consecutive current minima. The reported values should therefore be interpreted as experimental estimates rather than high-precision measurements.
 
-Clone the repository:
+## Experimental Figures
 
-```bash
-git clone https://github.com/<your-username>/franck-hertz-experiment.git
-cd franck-hertz-experiment
-```
+The following figures illustrate representative results obtained from the experimental data.
 
-Install the required dependencies:
+### I–V Curves
 
-```bash
-pip install -r requirements.txt
-```
+<!-- Replace the path below with the location of your figure -->
 
-Then run the analysis script:
+![Franck–Hertz I–V curves](results/figures/iv_curves.png)
 
-```bash
-python src/franck_hertz.py
-```
+*Representative experimental current-voltage curves obtained for different tube temperatures.*
 
-The script loads the experimental measurements, performs the analysis, and generates the corresponding plots.
+### Hysteresis
+
+<!-- Replace the path below with the location of your figure -->
+
+![Franck–Hertz hysteresis](results/figures/hysteresis.png)
+
+*Comparison between increasing and decreasing voltage sweeps.*
+
+### Temperature Dependence
+
+<!-- Replace the path below with the location of your figure -->
+
+![Critical voltage vs temperature](results/figures/critical_voltage_temperature.png)
+
+*Experimental critical voltage as a function of tube temperature, together with the fitted model.*
 
 ## Methods
 
@@ -125,17 +164,29 @@ The critical voltage is analyzed as a function of the Franck–Hertz tube temper
 
 The transformation
 
-[
-y = \log(V_\mathrm{critical})
-]
+$$
+y = \log(V_{\mathrm{critical}})
+$$
 
 is used to obtain a linear relationship with temperature:
 
-[
-\log(V_\mathrm{critical}) = aT+b.
-]
+$$
+\log(V_{\mathrm{critical}}) = aT+b.
+$$
 
 The fit is performed using the experimental uncertainty in the critical voltage as weights.
+
+The quality of the fit is evaluated using the coefficient of determination:
+
+$$
+R^2 =
+1 -
+\frac{
+\sum_i (y_i-y_i^{\mathrm{fit}})^2
+}{
+\sum_i (y_i-\bar{y})^2
+}.
+$$
 
 ### Minimum Detection
 
@@ -160,43 +211,55 @@ minimum_indices, _ = find_peaks(
 )
 ```
 
-The voltage differences between consecutive minima are then averaged across the selected measurements.
+The voltage differences between consecutive minima are then calculated and averaged across the selected experimental measurements.
 
 ### Excitation Energy
 
-For electrons with charge magnitude (e), an accelerating voltage difference (\Delta V) corresponds numerically to an energy difference of (\Delta V) eV.
+For an electron with charge magnitude $e$, an accelerating voltage difference $\Delta V$ corresponds to an energy difference
 
-Therefore,
+$$
+\Delta E = e,\Delta V.
+$$
 
-[
-E_\mathrm{exc} \approx \Delta V\ \mathrm{eV}.
-]
+Expressed in electronvolts, this relationship becomes numerically
+
+$$
+E_{\mathrm{exc}}[\mathrm{eV}]
+\approx
+\Delta V[\mathrm{V}].
+$$
+
+Therefore, the excitation energy is estimated from the mean voltage separation between consecutive minima:
+
+$$
+E_{\mathrm{exc}} \approx \Delta V.
+$$
 
 ### Photon Wavelength
 
-The wavelength associated with the excitation energy is calculated from
+The wavelength associated with the excitation energy is calculated using
 
-[
+$$
 \lambda = \frac{hc}{E}.
-]
+$$
 
-Using (hc \approx 1240\ \mathrm{eV,nm}),
+Using
 
-[
-\lambda[\mathrm{nm}] \approx
+$$
+hc \approx 1240,\mathrm{eV,nm},
+$$
+
+the wavelength in nanometers can be calculated directly as
+
+$$
+\lambda[\mathrm{nm}]
+\approx
 \frac{1240}{E[\mathrm{eV}]}.
-]
-
-Uncertainty propagation is performed using
-
-[
-\sigma_\lambda =
-\frac{hc}{E^2}\sigma_E.
-]
+$$
 
 ## Technologies
 
-* **Python**
+* **Python** — analysis and data processing
 * **NumPy** — numerical calculations and data handling
 * **SciPy** — signal processing, peak detection, and curve fitting
 * **Matplotlib** — experimental data visualization
@@ -205,15 +268,15 @@ Uncertainty propagation is performed using
 
 The Franck–Hertz experiment was first performed by **James Franck and Gustav Hertz** in 1914 and provided experimental evidence that atoms absorb energy in discrete quantities.
 
-The experiment played an important role in establishing the quantized nature of atomic energy levels and was awarded the **1925 Nobel Prize in Physics** to Franck and Hertz.
+The experiment played an important role in establishing the quantized nature of atomic energy levels and was recognized with the **1925 Nobel Prize in Physics**, awarded to Franck and Hertz.
 
 ## Reproducibility
 
 The analysis is designed to be reproducible from the original experimental measurements.
 
-All numerical parameters used for signal processing, fitting, and uncertainty estimation are explicitly defined in the source code.
+The raw experimental data collected during the laboratory session are included in the `MRF/` directory, while the analysis procedure and numerical parameters are defined in the Python source code.
 
-For complete reproducibility, the original experimental data should be included in the `data/` directory.
+This allows the analysis to be reproduced by running the provided script on the original measurements.
 
 ## Author
 
