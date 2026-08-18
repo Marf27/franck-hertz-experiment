@@ -122,25 +122,19 @@ The following figures illustrate representative results obtained from the experi
 
 ### I–V Curves
 
-<!-- Replace the path below with the location of your figure -->
-
-![Franck–Hertz I–V curves](results/figures/iv_curves.png)
+![Franck–Hertz I–V curves](IV.png)
 
 *Representative experimental current-voltage curves obtained for different tube temperatures.*
 
 ### Hysteresis
 
-<!-- Replace the path below with the location of your figure -->
-
-![Franck–Hertz hysteresis](results/figures/hysteresis.png)
+![Franck–Hertz hysteresis](hysteresis.png)
 
 *Comparison between increasing and decreasing voltage sweeps.*
 
 ### Temperature Dependence
 
-<!-- Replace the path below with the location of your figure -->
-
-![Critical voltage vs temperature](results/figures/critical_voltage_temperature.png)
+![Critical voltage vs temperature](temp.png)
 
 *Experimental critical voltage as a function of tube temperature, together with the fitted model.*
 
