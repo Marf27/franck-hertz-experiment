@@ -73,13 +73,13 @@ The voltage separation between consecutive current minima was determined from se
 The resulting mean voltage difference was:
 
 $$
-\Delta V = (5.06 \pm 2.94),\mathrm{V}
+\Delta V = (4.93 \pm 0,41),\mathrm{V}
 $$
 
 For singly charged electrons, the corresponding excitation energy is numerically equal to the voltage difference in electronvolts:
 
 $$
-E_{\mathrm{exc}} = (5.06 \pm 2.94),\mathrm{eV}
+E_{\mathrm{exc}} = (4.93 \pm 0.41),\mathrm{eV}
 $$
 
 This gives the experimental estimate of the excitation energy of mercury atoms obtained from the Franck–Hertz measurements.
@@ -110,7 +110,7 @@ The corresponding experimental excitation energy is therefore:
 
 $$
 \boxed{
-E_{\mathrm{exc}} = (5.06 \pm 2.94),\mathrm{eV}
+E_{\mathrm{exc}} = (4.93 \pm 0.41),\mathrm{eV}
 }
 $$
 
